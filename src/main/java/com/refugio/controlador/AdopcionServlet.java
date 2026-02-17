@@ -7,12 +7,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/api/adopciones")
 public class AdopcionServlet extends HttpServlet {
 
     private AdopcionDAO adopcionDAO;
@@ -22,6 +20,23 @@ public class AdopcionServlet extends HttpServlet {
     public void init() {
         adopcionDAO = new AdopcionDAO();
         gson = new Gson();
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
+
+        try {
+            java.util.List<java.util.Map<String, Object>> adopciones = adopcionDAO.listarAdopciones();
+            String json = gson.toJson(adopciones);
+            resp.getWriter().print(json);
+            resp.getWriter().flush();
+        } catch (SQLException e) {
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            resp.getWriter().write("{\"error\": \"Error al listar adopciones\"}");
+            e.printStackTrace();
+        }
     }
 
     @Override

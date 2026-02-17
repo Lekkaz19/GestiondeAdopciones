@@ -30,6 +30,10 @@ public class MascotaDAO {
                 m.setAdoptado(rs.getBoolean("adoptado"));
                 lista.add(m);
             }
+        } catch (SQLException e) {
+            System.err.println("Error SQL en listarNoAdoptadas: " + e.getMessage());
+            e.printStackTrace();
+            throw e;
         }
         return lista;
     }

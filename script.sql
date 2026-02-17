@@ -14,8 +14,8 @@ CREATE TABLE mascotas (
     id_mascota INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     edad INT NOT NULL,
-    raza VARCHAR(50),      -- Nuevo campo para más detalle
-    descripcion TEXT,      -- Nuevo campo para historia o detalles
+    raza VARCHAR(50),      
+    descripcion TEXT,      
     id_especie INT NOT NULL,
     adoptado BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (id_especie) REFERENCES especies(id_especie)
@@ -25,8 +25,8 @@ CREATE TABLE mascotas (
 CREATE TABLE adopciones (
     id_adopcion INT AUTO_INCREMENT PRIMARY KEY,
     nombre_adoptante VARCHAR(150) NOT NULL,
-    telefono VARCHAR(20) NOT NULL, -- Nuevo campo de contacto
-    email VARCHAR(100),            -- Nuevo campo de contacto
+    telefono VARCHAR(20) NOT NULL, 
+    email VARCHAR(100),            
     fecha_adopcion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     id_mascota INT NOT NULL,
     UNIQUE(id_mascota), -- Una mascota solo puede ser adoptada una vez

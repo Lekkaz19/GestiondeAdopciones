@@ -68,4 +68,37 @@ public class AdopcionDAO {
             }
         }
     }
+
+    public java.util.List<java.util.Map<String, Object>> listarAdopciones() throws SQLException {
+        String sql = "SELECT a.id_adopcion, a.nombre_adoptante, a.telefono, a.email, a.fecha_adopcion, " +
+                "m.id_mascota, m.nombre, m.edad, m.raza, m.descripcion, m.id_especie " +
+                "FROM adopciones a " +
+                "INNER JOIN mascotas m ON a.id_mascota = m.id_mascota " +
+                "ORDER BY a.fecha_adopcion DESC";
+
+        java.util.List<java.util.Map<String, Object>> lista = new java.util.ArrayList<>();
+
+        try (Connection conn = ConexionBD.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql);
+                java.sql.ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                java.util.Map<String, Object> adopcion = new java.util.HashMap<>();
+                adopcion.put("id_adopcion", rs.getInt("id_adopcion"));
+                adopcion.put("nombre_adoptante", rs.getString("nombre_adoptante"));
+                adopcion.put("telefono", rs.getString("telefono"));
+                adopcion.put("email", rs.getString("email"));
+                adopcion.put("fecha_adopcion", rs.getTimestamp("fecha_adopcion").toString());
+                adopcion.put("id_mascota", rs.getInt("id_mascota"));
+                adopcion.put("nombre_mascota", rs.getString("nombre"));
+                adopcion.put("edad", rs.getInt("edad"));
+                adopcion.put("raza", rs.getString("raza"));
+                adopcion.put("descripcion", rs.getString("descripcion"));
+                adopcion.put("id_especie", rs.getInt("id_especie"));
+                lista.add(adopcion);
+            }
+        }
+
+        return lista;
+    }
 }

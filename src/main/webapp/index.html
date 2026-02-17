@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Adopciones</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Sistema de Gestión de Adopciones</h1>
+            <p>Refugio de Animales</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="actions">
+            <button id="btn-nueva-mascota" class="btn-primary">+ Registrar Nueva Mascota</button>
+        </div>
+
+        <section id="mascotas-section">
+            <h2>Mascotas Disponibles para Adopción</h2>
+            <div id="lista-mascotas" class="grid">
+                <p class="loading">Cargando mascotas...</p>
+            </div>
+        </section>
+
+        <section id="adopciones-section">
+            <h2>Adopciones Realizadas</h2>
+            <div id="lista-adopciones">
+                <p class="loading">Cargando adopciones...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal: Registrar Mascota -->
+    <div id="modal-registrar" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="modal-registrar">&times;</span>
+            <h2>Registrar Nueva Mascota</h2>
+
+            <form id="form-registrar">
+                <div class="form-group">
+                    <label for="reg-nombre">Nombre *</label>
+                    <input type="text" id="reg-nombre" required minlength="2" maxlength="50"
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-especie">Especie *</label>
+                    <select id="reg-especie" required>
+                        <option value="">Seleccione...</option>
+                        <option value="1">Perro</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Conejo</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-raza">Raza</label>
+                    <input type="text" id="reg-raza" maxlength="50" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+"
+                        title="Solo letras y espacios">
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-edad">Edad (años) *</label>
+                    <input type="number" id="reg-edad" min="0" max="30" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-descripcion">Descripción</label>
+                    <textarea id="reg-descripcion" rows="3" maxlength="200"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Registrar Mascota</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Adopción -->
+    <div id="modal-adopcion" class="modal">
+        <div class="modal-content">
+            <span class="close" data-modal="modal-adopcion">&times;</span>
+            <h2>Solicitud de Adopción</h2>
+            <p>Mascota: <strong id="nombre-mascota-modal"></strong></p>
+
+            <form id="form-adopcion">
+                <input type="hidden" id="id-mascota">
+
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" required minlength="3" maxlength="100"
+                        pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" title="Solo letras y espacios">
+                </div>
+
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" required pattern="[0-9\-\+\s]{7,15}"
+                        title="Formato: 555-1234 o +1234567890" placeholder="555-1234">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" maxlength="100" placeholder="ejemplo@correo.com">
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
