@@ -1,0 +1,9 @@
+target/
+maven/
+*.class
+*.log
+.settings/
+.vscode/
+.project
+.classpath
+.DS_Store
