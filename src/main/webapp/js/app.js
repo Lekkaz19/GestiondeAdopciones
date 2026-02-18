@@ -68,19 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const especieNombre = mascota.id_especie === 1 ? 'Perro' : mascota.id_especie === 2 ? 'Gato' : 'Conejo';
 
             card.innerHTML = `
-                <div class="card-body">
-                    <div class="card-header">
-                        <h3 class="card-title">${mascota.nombre}</h3>
-                        <span class="card-tag">Disponible</span>
-                    </div>
-                    <div class="card-info">
-                        <span><strong>Especie:</strong> ${especieNombre}</span>
-                        <span><strong>Raza:</strong> ${mascota.raza || 'Sin especificar'}</span>
-                        <span><strong>Edad:</strong> ${mascota.edad} año${mascota.edad !== 1 ? 's' : ''}</span>
-                    </div>
-                    <p class="card-desc">${mascota.descripcion || 'Sin descripción disponible.'}</p>
-                    <button class="btn-card" onclick="abrirModalAdopcion(${mascota.id_mascota}, '${mascota.nombre}')">Adoptar</button>
+                <div class="card-header">
+                    <h3 class="card-title">${mascota.nombre}</h3>
+                    <span class="card-tag">Disponible</span>
                 </div>
+                <div class="card-info">
+                    <span><strong>Especie:</strong> ${especieNombre}</span>
+                    <span><strong>Raza:</strong> ${mascota.raza || 'Sin especificar'}</span>
+                    <span><strong>Edad:</strong> ${mascota.edad} año${mascota.edad !== 1 ? 's' : ''}</span>
+                </div>
+                <p class="card-desc">${mascota.descripcion || 'Sin descripción disponible.'}</p>
+                <button class="btn-card" onclick="abrirModalAdopcion(${mascota.id_mascota}, '${mascota.nombre}')">Adoptar</button>
             `;
             listaMascotas.appendChild(card);
         });

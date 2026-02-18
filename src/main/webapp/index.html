@@ -11,27 +11,32 @@
 <body>
     <header>
         <div class="container">
-            <h1>Sistema de Gestión de Adopciones</h1>
-            <p>Refugio de Animales</p>
+            <div>
+                <h1>Gestión de Adopciones</h1>
+                <p>Refugio de Animales</p>
+            </div>
+            <div class="header-actions">
+                <!-- Se podría poner algo aquí luego -->
+            </div>
         </div>
     </header>
 
     <main class="container">
         <div class="actions">
-            <button id="btn-nueva-mascota" class="btn-primary">+ Registrar Nueva Mascota</button>
+            <button id="btn-nueva-mascota" class="btn-primary"><span>+</span> Registrar Mascota</button>
         </div>
 
         <section id="mascotas-section">
-            <h2>Mascotas Disponibles para Adopción</h2>
+            <h2>🐾 Mascotas Disponibles</h2>
             <div id="lista-mascotas" class="grid">
-                <p class="loading">Cargando mascotas...</p>
+                <p class="loading">Cargando catálogo...</p>
             </div>
         </section>
 
         <section id="adopciones-section">
-            <h2>Adopciones Realizadas</h2>
+            <h2>📋 Registro de Adopciones</h2>
             <div id="lista-adopciones">
-                <p class="loading">Cargando adopciones...</p>
+                <p class="loading">Sincronizando datos...</p>
             </div>
         </section>
     </main>
